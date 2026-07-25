@@ -6,9 +6,13 @@
 
 import axios from 'axios';
 
-// Create axios instance
+// Create axios instance with production environment URL fallback
+const API_BASE = import.meta.env.VITE_API_BASE_URL
+  ? `${import.meta.env.VITE_API_BASE_URL}/api`
+  : '/api';
+
 const API = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE,
   timeout: 30000, // 30s timeout (AI calls can be slow)
   headers: { 'Content-Type': 'application/json' }
 });
