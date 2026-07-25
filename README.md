@@ -1,11 +1,15 @@
 # 📸 KhataSnap AI
 ### Visual Receipt & AI Micro Business Ledger
 
+🚀 **Live Web App**: [https://khatasnap-ai-web.onrender.com](https://khatasnap-ai-web.onrender.com)  
+⚡ **Production Hosting**: Both **Frontend** (React Static Site) and **Backend** (Express API) are deployed live on **Render.com** with **MongoDB Atlas** Cloud Database.
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-khatasnap--ai--web.onrender.com-success?style=for-the-badge&logo=render)](https://khatasnap-ai-web.onrender.com)
 [![Node.js](https://img.shields.io/badge/Node.js-v18%2B-green.svg)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-v18-blue.svg)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-v5-purple.svg)](https://vitejs.dev/)
 [![Groq AI](https://img.shields.io/badge/Groq_AI-Qwen_27B-orange.svg)](https://groq.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-v6%2B-emerald.svg)](https://www.mongodb.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-emerald.svg)](https://www.mongodb.com/)
 [![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
 ---
