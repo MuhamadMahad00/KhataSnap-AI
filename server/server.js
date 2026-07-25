@@ -16,9 +16,9 @@ const app = express();
 // Middleware
 // ============================================
 
-// Enable CORS for frontend
+// Enable CORS for frontend (development & production)
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: true,
   credentials: true
 }));
 
@@ -49,6 +49,11 @@ app.use('/api/receipts', receiptRoutes);
 app.use('/api/budgets', budgetRoutes);
 app.use('/api/challenges', challengeRoutes);
 app.use('/api/ai', aiRoutes);
+
+// Root health check endpoint
+app.get('/', (req, res) => {
+  res.json({ status: 'online', message: 'KhataSnap AI API Server is running!' });
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
