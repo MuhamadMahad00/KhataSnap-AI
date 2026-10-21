@@ -14,7 +14,10 @@ const mongoose = require('mongoose');
 const groqChat = new Groq({ apiKey: process.env.GROQ_API_KEY_CHAT });
 const groqInsights = new Groq({ apiKey: process.env.GROQ_API_KEY_INSIGHTS });
 
-const CHAT_MODEL = process.env.GROQ_CHAT_MODEL || 'openai/gpt-oss-120b';
+let rawChatModel = process.env.GROQ_CHAT_MODEL || 'openai/gpt-oss-120b';
+const CHAT_MODEL = (!rawChatModel || rawChatModel.includes('llama-3.1') || rawChatModel.includes('3.6'))
+  ? 'openai/gpt-oss-120b'
+  : rawChatModel;
 
 // ============================================
 // Helper: Get user's financial summary for AI context

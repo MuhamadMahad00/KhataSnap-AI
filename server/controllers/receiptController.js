@@ -70,8 +70,13 @@ Rules:
 - Return ONLY the JSON object, nothing else`;
 
     // Call Groq Vision API
+    let visionModel = process.env.GROQ_VISION_MODEL || 'qwen/qwen3.8-27b';
+    if (!visionModel || visionModel.includes('3.6')) {
+      visionModel = 'qwen/qwen3.8-27b';
+    }
+
     const completion = await groqVision.chat.completions.create({
-      model: process.env.GROQ_VISION_MODEL || 'qwen/qwen3.8-27b',
+      model: visionModel,
       messages: [
         {
           role: 'user',
