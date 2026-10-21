@@ -3,7 +3,7 @@
 // ============================================
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { HiOutlineFilter, HiOutlineSearch } from 'react-icons/hi';
+import { HiOutlineSearch } from 'react-icons/hi';
 import { receiptAPI } from '../services/api';
 import ReceiptCard from '../components/ReceiptCard';
 import SmartSearch from '../components/SmartSearch';

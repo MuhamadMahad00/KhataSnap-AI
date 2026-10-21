@@ -21,9 +21,9 @@ services:
       - key: GROQ_API_KEY_INSIGHTS
         sync: false
       - key: GROQ_VISION_MODEL
-        value: qwen/qwen3.6-27b
+        value: qwen/qwen3.8-27b
       - key: GROQ_CHAT_MODEL
-        value: llama-3.1-8b-instant
+        value: openai/gpt-oss-120b
 
   # Frontend Web Service
   - type: static
@@ -31,6 +31,9 @@ services:
     rootDir: client
     buildCommand: npm install && npm run build
     staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false
     routes:
       - type: rewrite
         source: /*

@@ -3,7 +3,7 @@
 // ============================================
 // React Router setup, auth context, and layout management.
 
-import { useState, useEffect, createContext } from 'react';
+import { useState, createContext, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence } from 'framer-motion';
@@ -29,12 +29,10 @@ import AIChatAssistant from './components/AIChatAssistant';
 export const AuthContext = createContext(null);
 
 export function useAuth() {
-  const context = React.useContext(AuthContext);
+  const context = useContext(AuthContext);
   if (!context) throw new Error('useAuth must be used within AuthProvider');
   return context;
 }
-
-import React from 'react';
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
@@ -63,7 +61,7 @@ function AuthProvider({ children }) {
 // Protected Route Wrapper
 // ============================================
 function ProtectedRoute({ children }) {
-  const { user } = React.useContext(AuthContext);
+  const { user } = useAuth();
   if (!user) return <Navigate to="/login" replace />;
   return children;
 }
@@ -72,7 +70,7 @@ function ProtectedRoute({ children }) {
 // App Layout — Navbar + Sidebar for authenticated pages
 // ============================================
 function AppLayout({ children }) {
-  const { user } = React.useContext(AuthContext);
+  const { user } = useAuth();
   const location = useLocation();
   const isPublicPage = ['/', '/login', '/register'].includes(location.pathname);
 

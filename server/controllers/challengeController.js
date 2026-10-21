@@ -9,7 +9,7 @@ const Groq = require('groq-sdk');
 const mongoose = require('mongoose');
 
 const groqInsights = new Groq({ apiKey: process.env.GROQ_API_KEY_INSIGHTS });
-const CHAT_MODEL = process.env.GROQ_CHAT_MODEL || 'llama-3.1-8b-instant';
+const CHAT_MODEL = process.env.GROQ_CHAT_MODEL || 'openai/gpt-oss-120b';
 
 // ============================================
 // POST /api/challenges — Create Challenge

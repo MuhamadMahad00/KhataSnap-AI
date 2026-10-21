@@ -196,8 +196,8 @@ cd KhataSnap-AI
    GROQ_API_KEY_INSIGHTS=your_groq_api_key_here
 
    # Supported Vision & Chat Models
-   GROQ_VISION_MODEL=qwen/qwen3.6-27b
-   GROQ_CHAT_MODEL=llama-3.1-8b-instant
+   GROQ_VISION_MODEL=qwen/qwen3.8-27b
+   GROQ_CHAT_MODEL=openai/gpt-oss-120b
    ```
 
 4. Start the backend server:

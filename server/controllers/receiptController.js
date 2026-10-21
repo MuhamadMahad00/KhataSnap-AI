@@ -71,7 +71,7 @@ Rules:
 
     // Call Groq Vision API
     const completion = await groqVision.chat.completions.create({
-      model: process.env.GROQ_VISION_MODEL || 'qwen/qwen3.6-27b',
+      model: process.env.GROQ_VISION_MODEL || 'qwen/qwen3.8-27b',
       messages: [
         {
           role: 'user',
@@ -87,7 +87,7 @@ Rules:
         }
       ],
       temperature: 0.1, // Low temperature for accurate extraction
-      max_completion_tokens: 2048
+      max_completion_tokens: 800
     });
 
     // Parse the AI response
