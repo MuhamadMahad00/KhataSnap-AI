@@ -27,7 +27,7 @@ services:
 
   # Frontend Web Service
   - type: static
-    name: khatasnap-web
+    name: khatasnap-ai-web
     rootDir: client
     buildCommand: npm install && npm run build
     staticPublishPath: dist
