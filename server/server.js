@@ -7,10 +7,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const mongoSanitize = require('express-mongo-sanitize');
 require('dotenv').config();
 
 const app = express();
+
+// Ensure uploads folder exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // ============================================
 // Middleware
@@ -32,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 
 // Serve uploaded files statically
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(uploadsDir));
 
 // ============================================
 // Routes
