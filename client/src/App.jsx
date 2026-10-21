@@ -3,7 +3,7 @@
 // ============================================
 // React Router setup, auth context, and layout management.
 
-import { useState, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence } from 'framer-motion';
@@ -66,13 +66,21 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
+import BottomNav from './components/BottomNav';
+
 // ============================================
 // App Layout — Navbar + Sidebar for authenticated pages
 // ============================================
 function AppLayout({ children }) {
   const { user } = useAuth();
   const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const isPublicPage = ['/', '/login', '/register'].includes(location.pathname);
+
+  // Close sidebar on navigation
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
 
   if (isPublicPage || !user) {
     return children;
@@ -80,13 +88,14 @@ function AppLayout({ children }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar onToggleSidebar={() => setSidebarOpen(prev => !prev)} isSidebarOpen={sidebarOpen} />
       <div className="page-wrapper">
-        <Sidebar />
+        <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
         <main className="main-content">
           {children}
         </main>
       </div>
+      <BottomNav />
       <AIChatAssistant />
     </>
   );

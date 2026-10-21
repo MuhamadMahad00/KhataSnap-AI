@@ -26,7 +26,7 @@ export default function Home() {
       {/* Navbar */}
       <nav style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        padding: '16px 32px', maxWidth: '1200px', margin: '0 auto'
+        padding: '16px clamp(16px, 4vw, 32px)', maxWidth: '1200px', margin: '0 auto'
       }}>
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{
@@ -78,7 +78,7 @@ export default function Home() {
             Upload a receipt photo and our AI instantly extracts every item, price, tax, and category.
             Track expenses, set budgets, and receive automated financial insights.
           </p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/register" className="btn-primary" style={{ textDecoration: 'none', padding: '14px 32px', fontSize: '16px', borderRadius: '12px' }}>
               Start Free →
             </Link>
@@ -96,7 +96,7 @@ export default function Home() {
           <h2 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '12px' }}>Everything You Need</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '16px' }}>Powerful features to manage your expenses effortlessly</p>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '20px' }}>
           {features.map((f, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.08 }}

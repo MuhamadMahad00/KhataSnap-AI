@@ -5,10 +5,10 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiOutlineUser, HiOutlineLogout } from 'react-icons/hi';
+import { HiOutlineUser, HiOutlineLogout, HiOutlineMenuAlt2, HiOutlineX } from 'react-icons/hi';
 import { AuthContext } from '../App';
 
-export default function Navbar() {
+export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
@@ -20,13 +20,14 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -20, opacity: 1 }}
       animate={{ y: 0, opacity: 1 }}
+      className="navbar-header"
       style={{
         position: 'fixed',
         top: 0, left: 0, right: 0,
         height: '64px',
-        background: 'rgba(255, 255, 255, 0.88)',
+        background: 'rgba(255, 255, 255, 0.92)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         borderBottom: '1px solid var(--border)',
@@ -34,27 +35,44 @@ export default function Navbar() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 24px'
+        padding: '0 16px'
       }}
     >
-      {/* Logo */}
-      <Link to="/dashboard" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{
-          width: '36px', height: '36px', borderRadius: '10px',
-          background: 'linear-gradient(135deg, #4F46E5, #7C3AED)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: 'white', fontWeight: 800, fontSize: '16px',
-          boxShadow: '0 4px 14px rgba(79, 70, 229, 0.35)'
-        }}>
-          K
-        </div>
-        <span style={{ fontWeight: 800, fontSize: '18px', color: 'var(--text)' }}>
-          KhataSnap<span style={{ color: 'var(--primary)' }}> AI</span>
-        </span>
-      </Link>
+      {/* Left: Mobile Toggle & Logo */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        {onToggleSidebar && (
+          <button
+            onClick={onToggleSidebar}
+            className="mobile-menu-btn"
+            aria-label="Toggle navigation menu"
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: 'var(--text)', padding: '6px', borderRadius: '8px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center'
+            }}
+          >
+            {isSidebarOpen ? <HiOutlineX size={22} /> : <HiOutlineMenuAlt2 size={22} />}
+          </button>
+        )}
+
+        <Link to="/dashboard" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{
+            width: '34px', height: '34px', borderRadius: '10px',
+            background: 'linear-gradient(135deg, #4F46E5, #7C3AED)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: 'white', fontWeight: 800, fontSize: '16px',
+            boxShadow: '0 4px 14px rgba(79, 70, 229, 0.35)'
+          }}>
+            K
+          </div>
+          <span style={{ fontWeight: 800, fontSize: '18px', color: 'var(--text)' }}>
+            KhataSnap<span style={{ color: 'var(--primary)' }}> AI</span>
+          </span>
+        </Link>
+      </div>
 
       {/* Right Side User Profile */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <div style={{ position: 'relative' }}>
           <button
             onClick={() => setShowMenu(!showMenu)}

@@ -95,7 +95,7 @@ export default function ReceiptEditor({ data, onSave, loading }) {
       </div>
 
       {/* Vendor & Date Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+      <div className="editor-row-2" style={{ marginBottom: '16px' }}>
         <div>
           <label style={labelStyle}>Vendor</label>
           <input style={inputStyle} value={form.vendor}
@@ -109,7 +109,7 @@ export default function ReceiptEditor({ data, onSave, loading }) {
       </div>
 
       {/* Currency, Receipt#, Payment, Category Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+      <div className="editor-row-4" style={{ marginBottom: '16px' }}>
         <div>
           <label style={labelStyle}>Currency</label>
           <input style={inputStyle} value={form.currency}
@@ -137,19 +137,20 @@ export default function ReceiptEditor({ data, onSave, loading }) {
       {/* Items Table */}
       <div style={{ marginBottom: '16px' }}>
         <label style={labelStyle}>Items</label>
-        <div style={{ border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden' }}>
-          {/* Header */}
-          <div style={{
-            display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 40px',
-            gap: '8px', padding: '10px 14px', background: '#F8FAFC',
-            fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)'
-          }}>
-            <span>Item Name</span>
-            <span>Qty</span>
-            <span>Price</span>
-            <span>Discount</span>
-            <span></span>
-          </div>
+        <div className="responsive-table-wrapper" style={{ border: '1px solid var(--border)', borderRadius: '10px' }}>
+          <div style={{ minWidth: '440px' }}>
+            {/* Header */}
+            <div style={{
+              display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 40px',
+              gap: '8px', padding: '10px 14px', background: '#F8FAFC',
+              fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)'
+            }}>
+              <span>Item Name</span>
+              <span>Qty</span>
+              <span>Price</span>
+              <span>Discount</span>
+              <span></span>
+            </div>
           {/* Rows */}
           {form.items.map((item, i) => (
             <div key={i} style={{
@@ -173,6 +174,7 @@ export default function ReceiptEditor({ data, onSave, loading }) {
               </button>
             </div>
           ))}
+          </div>
         </div>
         <button onClick={addItem} style={{
           display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px',
@@ -185,7 +187,7 @@ export default function ReceiptEditor({ data, onSave, loading }) {
       </div>
 
       {/* Totals */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+      <div className="editor-row-4" style={{ marginBottom: '16px' }}>
         <div>
           <label style={labelStyle}>Subtotal</label>
           <input style={inputStyle} type="number" value={form.subtotal}

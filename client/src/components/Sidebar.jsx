@@ -31,26 +31,25 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         <div
           onClick={() => setIsOpen(false)}
           style={{
-            position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.4)',
-            backdropFilter: 'blur(4px)', zIndex: 35
+            position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.5)',
+            backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', zIndex: 55
           }}
         />
       )}
 
       {/* Sidebar Container */}
-      <motion.aside
-        initial={false}
-        animate={{ x: isOpen ? 0 : 0 }}
+      <aside
         style={{
           position: 'fixed', top: 0, left: 0, bottom: 0,
-          width: '260px',
-          background: 'rgba(255, 255, 255, 0.95)',
+          width: '270px', maxWidth: '85vw',
+          background: 'rgba(255, 255, 255, 0.98)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderRight: '1px solid var(--border)',
-          zIndex: 40, padding: '24px 16px',
+          zIndex: 60, padding: '24px 16px',
           display: 'flex', flexDirection: 'column',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          boxShadow: isOpen ? 'var(--shadow-lg)' : 'none'
         }}
         className={`sidebar ${isOpen ? 'open' : ''}`}
       >
@@ -149,7 +148,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
             Groq Vision AI (Qwen 27B) categorizes your receipts automatically.
           </p>
         </div>
-      </motion.aside>
+      </aside>
 
       <style>{`
         @media (max-width: 768px) {

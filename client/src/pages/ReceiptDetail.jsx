@@ -84,7 +84,7 @@ export default function ReceiptDetail() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: receipt.imagePath ? '1fr 1.5fr' : '1fr', gap: '24px', alignItems: 'start' }}>
+      <div className="receipt-detail-grid" style={{ alignItems: 'start' }}>
         {/* Receipt Image */}
         {receipt.imagePath && (
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}

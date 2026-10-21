@@ -218,9 +218,9 @@ export default function Upload() {
 
       {/* Extracted Data Form */}
       {extractedData && !scanning && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignItems: 'start' }}>
+        <div className="upload-grid" style={{ alignItems: 'start' }}>
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
-            className="card" style={{ padding: '20px', position: 'sticky', top: '92px' }}>
+            className="card" style={{ padding: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
               <HiOutlineSparkles style={{ color: 'var(--primary)' }} />
               <h3 style={{ fontSize: '15px', fontWeight: 700 }}>Scanned Document</h3>

@@ -94,16 +94,7 @@ export default function Dashboard() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        style={{
-          background: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #4338CA 100%)',
-          borderRadius: 'var(--radius-lg)',
-          padding: '32px 36px',
-          marginBottom: '28px',
-          color: 'white',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: '0 16px 36px rgba(15, 23, 42, 0.25)'
-        }}
+        className="dashboard-banner"
       >
         <div style={{
           position: 'absolute', top: '-40%', right: '-10%',
@@ -122,7 +113,7 @@ export default function Dashboard() {
             }}>
               <HiOutlineSparkles size={14} /> AI Financial Ledger
             </span>
-            <h1 style={{ fontSize: '28px', fontWeight: 800, lineHeight: 1.2, marginBottom: '6px' }}>
+            <h1 style={{ fontSize: 'clamp(22px, 4vw, 28px)', fontWeight: 800, lineHeight: 1.2, marginBottom: '6px' }}>
               Welcome back, {user?.name || 'User'} 👋
             </h1>
             <p style={{ fontSize: '14px', opacity: 0.9, maxWidth: '520px' }}>
@@ -130,35 +121,35 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link to="/upload" style={{ textDecoration: 'none' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', width: '100%', maxWidth: '340px' }}>
+            <Link to="/upload" style={{ textDecoration: 'none', flex: 1, minWidth: '130px' }}>
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.96 }}
                 style={{
                   background: 'white', color: 'var(--primary)', border: 'none',
-                  padding: '12px 22px', borderRadius: 'var(--radius-sm)',
-                  fontWeight: 700, fontSize: '14px', cursor: 'pointer',
-                  display: 'inline-flex', alignItems: 'center', gap: '8px',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.15)', fontFamily: 'Inter, sans-serif'
+                  padding: '11px 16px', borderRadius: 'var(--radius-sm)',
+                  fontWeight: 700, fontSize: '13px', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.15)', fontFamily: 'Inter, sans-serif', width: '100%'
                 }}
               >
-                <HiOutlineUpload size={18} /> Quick Upload
+                <HiOutlineUpload size={17} /> Quick Upload
               </motion.button>
             </Link>
-            <Link to="/receipts" style={{ textDecoration: 'none' }}>
+            <Link to="/receipts" style={{ textDecoration: 'none', flex: 1, minWidth: '130px' }}>
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.96 }}
                 style={{
                   background: 'rgba(255, 255, 255, 0.18)', color: 'white', border: '1px solid rgba(255, 255, 255, 0.35)',
-                  padding: '12px 22px', borderRadius: 'var(--radius-sm)',
-                  fontWeight: 600, fontSize: '14px', cursor: 'pointer',
-                  display: 'inline-flex', alignItems: 'center', gap: '8px',
-                  backdropFilter: 'blur(8px)', fontFamily: 'Inter, sans-serif'
+                  padding: '11px 16px', borderRadius: 'var(--radius-sm)',
+                  fontWeight: 600, fontSize: '13px', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+                  backdropFilter: 'blur(8px)', fontFamily: 'Inter, sans-serif', width: '100%'
                 }}
               >
-                <HiOutlineSparkles size={18} /> Smart Search
+                <HiOutlineSparkles size={17} /> Search
               </motion.button>
             </Link>
           </div>
@@ -166,7 +157,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Stats Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+      <div className="stats-grid" style={{ marginBottom: '24px' }}>
         {statCards.map((card, i) => (
           <StatCard key={i} {...card} index={i} />
         ))}
@@ -174,19 +165,19 @@ export default function Dashboard() {
 
       {/* Budget Tracker */}
       {budget && (
-        <div style={{ marginBottom: '28px' }}>
+        <div style={{ marginBottom: '24px' }}>
           <BudgetTracker {...budget} />
         </div>
       )}
 
       {/* Charts Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+      <div className="charts-grid" style={{ marginBottom: '24px' }}>
         <MonthlyLineChart data={stats?.monthlyTrend || []} />
         <CategoryPieChart data={stats?.categoryBreakdown || []} />
       </div>
 
       {/* Vendor Chart + Financial Score */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+      <div className="charts-grid" style={{ marginBottom: '24px' }}>
         <VendorBarChart data={stats?.vendorBreakdown || []} />
         <FinancialScore />
       </div>

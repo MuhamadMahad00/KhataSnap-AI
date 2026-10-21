@@ -78,7 +78,7 @@ export default function Receipts() {
 
           {/* Receipt Grid */}
           {loading ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '16px' }}>
               <SkeletonCard count={6} />
             </div>
           ) : receipts.length === 0 ? (
@@ -89,7 +89,7 @@ export default function Receipts() {
             </div>
           ) : (
             <>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '16px' }}>
                 {receipts.map((r, i) => <ReceiptCard key={r._id} receipt={r} index={i} />)}
               </div>
               {/* Pagination */}

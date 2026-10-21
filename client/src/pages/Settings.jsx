@@ -118,7 +118,7 @@ export default function Settings() {
           {currentBudget && currentBudget.budget > 0 && (
             <div className="card" style={{ padding: '24px', marginBottom: '20px', maxWidth: '500px' }}>
               <h3 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px' }}>Current Month's Budget</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '12px' }}>
                 <div><p style={{ fontSize: '11px', color: 'var(--text-light)' }}>Budget</p><p style={{ fontWeight: 800, fontSize: '20px' }}>${currentBudget.budget.toFixed(2)}</p></div>
                 <div><p style={{ fontSize: '11px', color: 'var(--text-light)' }}>Spent</p><p style={{ fontWeight: 800, fontSize: '20px', color: currentBudget.isOverBudget ? 'var(--danger)' : 'var(--text)' }}>${currentBudget.spent.toFixed(2)}</p></div>
                 <div><p style={{ fontSize: '11px', color: 'var(--text-light)' }}>Remaining</p><p style={{ fontWeight: 800, fontSize: '20px', color: currentBudget.isOverBudget ? 'var(--danger)' : 'var(--success)' }}>${Math.abs(currentBudget.remaining).toFixed(2)}</p></div>
@@ -128,7 +128,7 @@ export default function Settings() {
           {/* Set Budget */}
           <div className="card" style={{ padding: '24px', maxWidth: '500px' }}>
             <h3 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}>Set Monthly Budget</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px', marginBottom: '16px' }}>
               <div>
                 <label style={labelStyle}>Month</label>
                 <select style={{ ...inputStyle, cursor: 'pointer' }} value={budget.month}
@@ -164,7 +164,7 @@ export default function Settings() {
             <h3 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}>
               <HiOutlinePlus size={16} style={{ display: 'inline', verticalAlign: 'middle' }} /> Create Challenge
             </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', marginBottom: '12px' }}>
               <div>
                 <label style={labelStyle}>Title</label>
                 <input style={inputStyle} value={newChallenge.title}
@@ -199,7 +199,7 @@ export default function Settings() {
               <p>No challenges yet. Create your first spending challenge!</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '16px' }}>
               {challenges.map((c, i) => (
                 <ChallengeCard key={c._id} challenge={c} onDelete={deleteChallenge} index={i} />
               ))}
